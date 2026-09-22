@@ -1,0 +1,39 @@
+:root{
+  --color-primary: #0F141C;
+  --color-secondary: #1A2230;
+  
+  --accent-primary: #F3CD4B;
+  --accent-secondary: #00F0FF;
+
+  --text-primary: #E2E8F0;
+}
+
+html,
+body,
+#root{
+    height: 100%;
+}
+
+#root{
+    display: flex;
+    flex-direction: column;
+}
+
+body{
+  background: var(--color-primary);
+  color: var(--text-primary);
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.main-content{
+  flex: 1;
+  padding-top: 200px;
+}
