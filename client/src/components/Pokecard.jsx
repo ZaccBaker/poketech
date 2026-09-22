@@ -3,16 +3,19 @@ import '../style/components/Pokecard.css'
 import { useParams } from 'react-router-dom';
 
 
-function Pokecard(){
+function Pokecard(info){
 
-    const { index } = useParams();
 
 
     return (
         <div className='pokecard'>
             <div>
-                <h2>{}</h2>
+                <h2>{info.name}</h2>
             </div>
+
+            <hr />
+
+            
 
         </div>
     );
