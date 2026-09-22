@@ -1,0 +1,33 @@
+@media (max-width: 900px){
+    .section.team{
+        display: grid;
+        grid-template-columns: 1fr;
+        place-items: center;
+
+        gap: 30px;
+    }
+}
+
+@media (min-width: 900px){
+    .section.team{
+        display: grid;
+        grid-template-columns: 1fr;
+        place-items: center;
+
+        gap: 30px;
+    }
+}
+
+@media (min-width: 1200px){
+    .section.team{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1600px){
+    .section.team{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}

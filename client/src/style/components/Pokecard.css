@@ -1,0 +1,6 @@
+.pokecard{
+    height: 600px;
+    width: 550px;
+
+    background: var(--color-secondary);
+}

@@ -1,4 +1,4 @@
-import '../style/components/Dashboard.css'
+import '../style/pages/Dashboard.css'
 
 import { useParams } from 'react-router-dom';
 
