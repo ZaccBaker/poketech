@@ -12,7 +12,7 @@
     align-items: center;
 
     background: var(--color-secondary);
-    color: white;
+    color: var(--text-primary);
 
     border: 1px solid var(--accent-thirdly);
     border-radius: 5px;
@@ -25,13 +25,14 @@
     top: calc(100% + 5px);
     left: 0;
 
+    max-height: 250px;
     width: 100%;
 
     background: var(--color-secondary);
     border: 1px solid var(--accent-thirdly);
     border-radius: 5px;
 
-    overflow: hidden;
+    overflow-y: auto;
     z-index: 10;
 }
 

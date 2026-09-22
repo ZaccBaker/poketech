@@ -23,7 +23,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
 
-          <Route path='/dash/:genId' element={<Dashboard />} />
+          <Route path='/dash/:generation' element={<Dashboard />} />
         </Routes>
 
       </div>
