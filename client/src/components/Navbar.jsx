@@ -1,5 +1,6 @@
-import { useEffect } from 'react';
 import '../style/components/Navbar.css'
+
+import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import Dashboard from '../pages/Dashboard';

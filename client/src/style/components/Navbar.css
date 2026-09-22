@@ -53,3 +53,8 @@ a{
 
     list-style: none;
 }
+
+.nav.gens a:hover{
+    color: color-mix(in srgb, var(--accent-primary), #fff 50%);
+    text-decoration: underline;
+}

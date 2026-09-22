@@ -1,18 +1,20 @@
-import { useEffect } from 'react';
 import '../style/components/Dashboard.css'
 
-// import NavDropdown from '../components/NavDropdown';
-// import { useTheme } from "@mui/material/styles";
-// import useMediaQuery from "@mui/material/useMediaQuery";
-// import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
+import Team from '../sections/Team';
 
 
 function Dashboard(){
 
+    const { genId } = useParams();
+
+
     return (
         <div className='page dashboard'>
-            <p>Dashboard</p>
+            <h1>{genId}</h1>
+
+            <Team />
 
         </div>
     );
