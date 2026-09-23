@@ -3,7 +3,7 @@ import '../style/components/SelectorDropdown.css';
 
 import{
     getPokemonByGeneration,
-
+    getMovesByPokemon
 } from '../services/Pokedex';
 
 function SelectorDropdown({info, onSelect}){
@@ -11,10 +11,16 @@ function SelectorDropdown({info, onSelect}){
     const [isOpen, setIsOpen] = useState(false);
     const [selected, setSelected] = useState(info.type);
     const [options, setOptions] = useState([]);
+    const [search, setSearch] = useState("");
     
+
+    const filteredOptions = options.filter((option) =>
+        option.toLowerCase().includes(search.toLowerCase())
+    );
 
     const handleSelect = (option) => {
         setSelected(option);
+        setSearch(option);
         setIsOpen(false);
 
         if (onSelect) {
@@ -31,28 +37,42 @@ function SelectorDropdown({info, onSelect}){
                 data = await getPokemonByGeneration(info.generation);
             }
 
-
+            if (info.type === "Move" && info.name) {
+                data = await getMovesByPokemon(info.name);
+            }
 
             setOptions(data);
         };
 
         getOptions();
-    }, [info.type, info.generation]);
+    }, [info.type, info.generation, info.name]);
 
 
     return (
         <div className='selector-dropdown'>
-            <button
+            <input 
+                type='text'
+                className='dropdown-input'
+                value={search}
+                placeholder={selected}
+                onChange={(e) => {
+                    setSearch(e.target.value);
+                    setIsOpen(true);
+                }}
+                onFocus={() => setIsOpen(true)}
+            />
+            
+            {/* <input
                 className="dropdown-button"
                 onClick={() => setIsOpen(!isOpen)}
             >
                 {selected}
                 <span>▼</span>
-            </button>
+            </button> */}
 
             {isOpen && (
                 <div className="dropdown-menu">
-                    {options.map((option) => (
+                    {filteredOptions.map((option) => (
                         <button
                             key={option}
                             className="dropdown-option"

@@ -38,12 +38,24 @@ function TeamSelector({info}){
             </div>
 
             <div className='selector-content'>
-                <SelectorDropdown info={{
-                        type: "Name",
-                        generation: apiGeneration
-                    }}
-                    onSelect={setPokemon}
-                />
+                <div className='selector-name'>
+                    <SelectorDropdown info={{
+                            type: "Name",
+                            generation: apiGeneration
+                        }}
+                        onSelect={setPokemon}
+                    />
+                </div>
+                <div className='selector-moves'>
+                    {Array.from({length:4}).map((_, index) => (
+                        <SelectorDropdown info={{
+                            type: "Move",
+                            generation: apiGeneration,
+                            name: pokemon
+                        }}
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );
