@@ -3,7 +3,17 @@ import '../style/components/TeamEdit.css';
 import TeamSelector from './TeamSelector';
 
 
-function TeamEdit({onClose}){
+function TeamEdit({team, setTeam, onClose}){
+
+    const updateTeamMember = (index, data) => {
+        setTeam(prevTeam =>
+            prevTeam.map((member, i) =>
+                i === index
+                    ? {...member, ...data}
+                    : member
+            )
+        );
+    };
 
     return (
         <div 
@@ -20,13 +30,26 @@ function TeamEdit({onClose}){
                 </div>
 
                 <div className='edit-content'>
-                    {Array.from({length:6}).map((_, index) => (
-                        <TeamSelector info={{
-                            number: index+1
-                        }}/>
+                    {team.map((member, index) => (
+                        <TeamSelector 
+                            key={index}
+                            number={index + 1}
+                            member={member}
+                            onChange={(data) => {
+                                setTeam(prev =>
+                                    prev.map((item, i) =>
+                                        i === index
+                                            ? {...item, ...data}
+                                            :item
+                                    )
+                                );
+                            }}
+                        />
                     ))}
 
                 </div>
+
+                
             </div>
         </div>
     );

@@ -5,13 +5,20 @@ import { useState } from 'react';
 
 import TeamEdit from '../components/TeamEdit';
 import Pokecard from '../components/Pokecard';
+import { getPokemonByGeneration } from '../services/Pokedex';
 
 
 function Team(){
 
     const [showEdit, setShowEdit] = useState(false);
 
-    const { genId } = useParams();
+    const [team, setTeam] = useState(
+        Array.from({length:6}, (_, index) => ({
+            slot: index + 1,
+            pokemon: null,
+            moves: [null, null, null, null]
+        }))
+    );
 
     const onShowEditClick = () => {
         setShowEdit(true);
@@ -21,16 +28,23 @@ function Team(){
     return (
         <>
             <section className='section team'>
+
                 <button onClick={onShowEditClick}>Edit Team</button>
+
                 <div className='team-content'>
-                    {Array.from({ length:6 }).map((_, index) => (
-                        <Pokecard key={index} />
+                    {team.map((member, index) => (
+                        <Pokecard 
+                            key={index}
+                            data={member}
+                        />
                     ))} 
                 </div>           
             </section>
 
             {showEdit && (
-                <TeamEdit 
+                <TeamEdit
+                    team={team}
+                    setTeam={setTeam}
                     onClose = {() => setShowEdit(false)}
                 />
             )}

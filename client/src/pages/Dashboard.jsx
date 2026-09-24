@@ -7,12 +7,12 @@ import Team from '../sections/Team';
 
 function Dashboard(){
 
-    const { genId } = useParams();
+    const { generation } = useParams();
 
 
     return (
         <div className='page dashboard'>
-            <h1>{genId}</h1>
+            <h1>{generation}</h1>
 
             <Team />
 

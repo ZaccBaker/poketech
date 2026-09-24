@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import SelectorDropdown from './SelectorDropdown';
 
 
-function TeamSelector({info}){
+function TeamSelector({number, member, onChange}){
     
     const {generation} = useParams();
 
@@ -24,9 +24,23 @@ function TeamSelector({info}){
 
     const apiGeneration = generations[generation];
 
-    console.log(apiGeneration);
-    
-    const [pokemon, setPokemon] = useState("");
+    console.log("API Generation: ", apiGeneration);
+
+    const handlePokemonSelect = (pokemon) => {
+        onChange({
+            pokemon: pokemon
+        });
+    };
+
+    const handleMoveSelect = (moveIndex, move) => {
+        const updatedMoves = [...member.moves];
+
+        updatedMoves[moveIndex] = move;
+
+        onChange({
+            moves: updatedMoves
+        });
+    };
 
 
 
@@ -34,25 +48,29 @@ function TeamSelector({info}){
     return (
         <div className='team-selector'>
             <div className='selector-header'>
-                <h4>Pokémon {info.number}</h4>
+                <h4>Pokémon {number}</h4>
             </div>
 
             <div className='selector-content'>
                 <div className='selector-name'>
-                    <SelectorDropdown info={{
+                    <SelectorDropdown 
+                        info={{
                             type: "Name",
                             generation: apiGeneration
                         }}
-                        onSelect={setPokemon}
+                        onSelect={handlePokemonSelect}
                     />
                 </div>
                 <div className='selector-moves'>
-                    {Array.from({length:4}).map((_, index) => (
-                        <SelectorDropdown info={{
-                            type: "Move",
-                            generation: apiGeneration,
-                            name: pokemon
-                        }}
+                    {member.moves.map((move, index) => (
+                        <SelectorDropdown 
+                            key={index}
+                            info={{
+                                type: "Move",
+                                name: member.pokemon,
+                                number: index + 1
+                            }}
+                            onSelect={(selectedMove) => handleMoveSelect(index, selectedMove)}
                         />
                     ))}
                 </div>

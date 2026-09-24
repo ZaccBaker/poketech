@@ -51,12 +51,10 @@ function SelectorDropdown({info, onSelect}){
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            console.log("Document click: ", event.target);
             if (
                 dropdownRef.current &&
                 !dropdownRef.current.contains(event.target)
             ) {
-                console.log("Outside dropdown");
                 setIsOpen(false);
             }
         };
