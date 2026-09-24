@@ -30,7 +30,11 @@ function Team(){
         <>
             <section className='section team'>
 
-                <button onClick={onShowEditClick}>Edit Team</button>
+                <button  
+                    onClick={onShowEditClick}
+                >
+                    Edit Team
+                </button>
 
                 <div className='team-content'>
                     {team.map((member, index) => (

@@ -48,6 +48,7 @@
     letter-spacing: 1px;
     
     padding: 10px;
+    cursor: pointer;
 
     border-radius: 5px;
     border: 1px solid var(--accent-primary);
