@@ -1,11 +1,14 @@
 .selector-dropdown {
     position: relative;
-    width: 200px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 .dropdown-input {
     width: 100%;
     padding: 10px 14px;
+    box-sizing: border-box;
 
     display: flex;
     justify-content: space-between;
@@ -20,13 +23,31 @@
     cursor: pointer;
 }
 
+.dropdown-arrow{
+    position: absolute;
+
+    right: 12px;
+    top: 50%;
+
+    transition: transform 0.2s ease;
+    transform: translateY(-50%);
+
+    cursor: pointer;
+    user-select: none;
+}
+
+.dropdown-arrow.open{
+    transform: translateY(-50%) rotate(180deg);
+}
+
 .dropdown-menu {
     position: absolute;
-    top: calc(100% + 5px);
+    top: 100%;
     left: 0;
 
     max-height: 250px;
     width: 100%;
+    box-sizing: border-box;
 
     background: var(--color-secondary);
     border: 1px solid var(--accent-thirdly);

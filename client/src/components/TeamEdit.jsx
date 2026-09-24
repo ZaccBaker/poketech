@@ -6,8 +6,15 @@ import TeamSelector from './TeamSelector';
 function TeamEdit({onClose}){
 
     return (
-        <div className='team-edit' onClick={onClose}>
-            <div className='edit-main' onClick={(e) => e.stopPropagation()}>
+        <div 
+            className='team-edit' 
+            onClick={(e) => {
+                if (e.target === e.currentTarget) {
+                    onClose();
+                }
+            }}
+        >
+            <div className='edit-main'>
                 <div className='edit-header'>
                     <h2>Edit Pokémon Team</h2>
                 </div>

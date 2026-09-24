@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import '../style/components/SelectorDropdown.css';
 
 import{
@@ -13,6 +13,7 @@ function SelectorDropdown({info, onSelect}){
     const [options, setOptions] = useState([]);
     const [search, setSearch] = useState("");
     
+    const dropdownRef = useRef(null);
 
     const filteredOptions = options.filter((option) =>
         option.toLowerCase().includes(search.toLowerCase())
@@ -48,11 +49,35 @@ function SelectorDropdown({info, onSelect}){
     }, [info.type, info.generation, info.name]);
 
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            console.log("Document click: ", event.target);
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target)
+            ) {
+                console.log("Outside dropdown");
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener("click", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
+
+
     return (
-        <div className='selector-dropdown'>
+        <div 
+            className='selector-dropdown' 
+            ref={dropdownRef}
+        >
             <input 
                 type='text'
                 className='dropdown-input'
+                // ref={dropdownRef}
                 value={search}
                 placeholder={selected}
                 onChange={(e) => {
@@ -61,19 +86,19 @@ function SelectorDropdown({info, onSelect}){
                 }}
                 onFocus={() => setIsOpen(true)}
             />
-            
-            {/* <input
-                className="dropdown-button"
+
+            <span
+                className={`dropdown-arrow ${isOpen ? "open" : ""}`}
                 onClick={() => setIsOpen(!isOpen)}
             >
-                {selected}
-                <span>▼</span>
-            </button> */}
+                ▼
+            </span>
 
             {isOpen && (
                 <div className="dropdown-menu">
                     {filteredOptions.map((option) => (
                         <button
+                            type='button'
                             key={option}
                             className="dropdown-option"
                             onClick={() => handleSelect(option)}
