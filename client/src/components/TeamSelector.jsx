@@ -24,7 +24,7 @@ function TeamSelector({number, member, onChange}){
 
     const apiGeneration = generations[generation];
 
-    console.log("API Generation: ", apiGeneration);
+    // console.log("API Generation: ", apiGeneration);
 
     const handlePokemonSelect = (pokemon) => {
         onChange({
@@ -58,6 +58,7 @@ function TeamSelector({number, member, onChange}){
                             type: "Name",
                             generation: apiGeneration
                         }}
+                        value={member.pokemon}
                         onSelect={handlePokemonSelect}
                     />
                 </div>
@@ -70,6 +71,7 @@ function TeamSelector({number, member, onChange}){
                                 name: member.pokemon,
                                 number: index + 1
                             }}
+                            value={move}
                             onSelect={(selectedMove) => handleMoveSelect(index, selectedMove)}
                         />
                     ))}

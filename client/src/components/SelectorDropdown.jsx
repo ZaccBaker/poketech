@@ -6,7 +6,7 @@ import{
     getMovesByPokemon
 } from '../services/Pokedex';
 
-function SelectorDropdown({info, onSelect}){
+function SelectorDropdown({info, value, onSelect}){
 
     const [isOpen, setIsOpen] = useState(false);
     const [selected, setSelected] = useState(info.type);
@@ -76,7 +76,7 @@ function SelectorDropdown({info, onSelect}){
                 type='text'
                 className='dropdown-input'
                 // ref={dropdownRef}
-                value={search}
+                value={value || search}
                 placeholder={selected}
                 onChange={(e) => {
                     setSearch(e.target.value);

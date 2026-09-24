@@ -15,7 +15,7 @@ function Pokecard({data}){
     return (
         <div className='pokecard'>
             <div>
-                <h2>{data.pokemon?.name ?? "Select Pokemon"}</h2>
+                <h2>{data.pokemon ?? "Select Pokemon"}</h2>
             </div>
 
             <hr />
@@ -28,7 +28,7 @@ function Pokecard({data}){
             <div className='pokecard-moves'>
                 {data.moves.map((move, index) => (
                     <div key={index}>
-                        {move?.name ?? "Select Move"}
+                        {move ?? "Select Move"}
                     </div>
                 ))}
             </div>

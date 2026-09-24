@@ -24,6 +24,7 @@ function Team(){
         setShowEdit(true);
     };
 
+    console.log("Team: ", team);
 
     return (
         <>
