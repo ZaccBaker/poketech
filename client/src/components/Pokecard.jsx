@@ -16,11 +16,6 @@ function Pokecard({data}){
     const [type, setType] = useState([]);
     const [moveTypes, setMoveTypes] = useState([]);
 
-    // const {pokemon, moves} = data;
-
-    // if (!pokemon) {
-    //     return null;
-    // }
 
     useEffect(() => {
             const getDetailedData = async () => {
@@ -50,22 +45,21 @@ function Pokecard({data}){
             <div className='pokecard-pokemon'>
                 <h2>{data.pokemon ?? "Select Pokemon"}</h2>
                 
-                {type.map((t, index) => (
-                    <span key={t}>
-                        <span
-                            className='pokecard-type'
-                            style={{
-                                color: `var(--type-${t.toLowerCase()})`
-                            }}
-                        >
-                            {t}
+                <div className='pokecard-pokemon-type'>
+                    {type.map((t, index) => (
+                        <span key={t}>
+                            <span
+                                className={`pokecard-type type type-${t.toLowerCase()}`}
+                            >
+                                {t}
+                            </span>
+                            
+                            {index < type.length - 1 && (
+                                <span className='type-separator'> / </span>
+                            )}
                         </span>
-                        
-                        {index < type.length - 1 && (
-                            <span className='type-separator'> / </span>
-                        )}
-                    </span>
-                ))}
+                    ))}
+                </div>
             </div>
 
             <hr />
@@ -84,10 +78,7 @@ function Pokecard({data}){
 
                         {moveTypes[index] && (
                             <span
-                                className='pokecard-movetype'
-                                style={{
-                                    color: `var(--type-${moveTypes[index].toLowerCase()})`
-                                }}
+                                className={`pokecard-movetype type type-${moveTypes[index].toLowerCase()}`}
                             >
                                 {moveTypes[index]}
                             </span>

@@ -1,55 +1,340 @@
-.pokecard{
-    height: 600px;
-    width: 550px;
+/* =========================================
+   POKECARD
+   ========================================= */
 
-    border-radius: 20px;
-
-    background: var(--color-secondary);
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); 
-}
-
-.pokecard-pokemon{
-    text-align: center;
-    padding: 20px;
-}
-
-.pokecard hr{
-    border: none;
-    height: 1px;
-    background-image: linear-gradient(to right, rgba(0,0,0,0), var(--accent-secondary), rgba(0,0,0,0));
-}
-
-.pokecard-moves{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.pokecard {
+    position: relative;
 
     width: 100%;
     box-sizing: border-box;
 
-    gap: 20px;
-    padding: 20px;
+    padding: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.06),
+            rgba(255, 255, 255, 0.01)
+        ),
+        var(--bg-secondary);
+
+    border: 3px solid rgba(255, 255, 255, 0.16);
+    border-radius: 14px;
+
+    box-shadow:
+        0 7px 0 rgba(0, 0, 0, 0.40),
+        0 12px 25px rgba(0, 0, 0, 0.30),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+    overflow: hidden;
 }
+
+
+/* =========================================
+   TOP ACCENT
+   ========================================= */
+
+.pokecard::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background: var(--accent-primary);
+
+    box-shadow:
+        0 0 8px rgba(102, 252, 241, 0.45);
+}
+
+
+/* =========================================
+   POKEMON HEADER
+   ========================================= */
+
+.pokecard-pokemon {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 16px 18px;
+
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.09),
+        rgba(0, 0, 0, 0.08)
+    );
+
+    border: 2px solid rgba(255, 255, 255, 0.10);
+    border-radius: 9px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        inset 0 -2px 3px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Pokemon name */
+
+.pokecard-pokemon h2 {
+    margin: 0;
+
+    color: var(--text-primary);
+
+    font-size: 1.35rem;
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+    text-transform: capitalize;
+
+    text-shadow:
+        0 2px 2px rgba(0, 0, 0, 0.40);
+}
+
+
+/* =========================================
+   POKEMON TYPES
+   ========================================= */
+
+.pokecard-pokemon-type {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+}
+
+.pokecard-type {
+    display: inline-block;
+
+    min-width: 55px;
+
+    padding: 5px 9px;
+
+    text-align: center;
+
+    font-size: 0.70rem;
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    text-transform: uppercase;
+
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.30),
+        0 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.type-separator {
+    margin: 0 2px;
+
+    color: rgba(255, 255, 255, 0.35);
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   DIVIDER
+   ========================================= */
+
+.pokecard hr {
+    height: 2px;
+
+    margin: 14px 4px;
+
+    border: none;
+    border-radius: 5px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.18),
+        transparent
+    );
+}
+
+
+/* =========================================
+   MOVES GRID
+   ========================================= */
+
+.pokecard-moves {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+
+/* =========================================
+   MOVE BUTTONS
+   ========================================= */
 
 .pokecard-move-0,
 .pokecard-move-1,
 .pokecard-move-2,
-.pokecard-move-3{
+.pokecard-move-3 {
     display: flex;
     flex-direction: column;
+
     justify-content: space-between;
-    align-items: center;
-    
-    width: 100%;
+    align-items: flex-start;
+
+    min-height: 90px;
+
     box-sizing: border-box;
 
-    padding: 20px;
-    border-radius: 15px;
+    padding: 13px 14px;
+
+    color: var(--text-primary);
+
+    font-size: 0.95rem;
+    font-weight: 700;
+
+    background: linear-gradient(
+        145deg,
+        rgba(255, 255, 255, 0.08),
+        rgba(0, 0, 0, 0.10)
+    );
+
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    border-radius: 9px;
+
+    box-shadow:
+        0 4px 0 rgba(0, 0, 0, 0.30),
+        0 6px 10px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.13);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.12s ease,
+        border-color 0.12s ease,
+        box-shadow 0.12s ease;
+}
+
+
+/* Hover */
+
+.pokecard-move-0:hover,
+.pokecard-move-1:hover,
+.pokecard-move-2:hover,
+.pokecard-move-3:hover {
+    transform: translateY(-2px);
+
+    border-color: rgba(102, 252, 241, 0.50);
+
+    box-shadow:
+        0 6px 0 rgba(0, 0, 0, 0.25),
+        0 8px 14px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+
+/* Pressed */
+
+.pokecard-move-0:active,
+.pokecard-move-1:active,
+.pokecard-move-2:active,
+.pokecard-move-3:active {
+    transform: translateY(2px);
+
+    box-shadow:
+        0 1px 0 rgba(0, 0, 0, 0.35),
+        inset 0 2px 4px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =========================================
+   MOVE TYPE BADGES
+   ========================================= */
+
+.pokecard-movetype {
+    display: inline-block;
+
+    margin-top: 12px;
+
+    min-width: 55px;
+
+    padding: 4px 8px;
 
     text-align: center;
 
+    font-size: 0.65rem;
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    text-transform: uppercase;
+
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+
     box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.03);
-    ; 
-    /* background: red; */
+        inset 0 1px 0 rgba(255, 255, 255, 0.30),
+        0 2px 2px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =========================================
+   TYPE COLORS
+   ========================================= */
+
+.type-normal   { background-color: var(--type-normal); }
+.type-fire     { background-color: var(--type-fire); }
+.type-water    { background-color: var(--type-water); }
+.type-electric { background-color: var(--type-electric); }
+.type-grass    { background-color: var(--type-grass); }
+.type-ice      { background-color: var(--type-ice); }
+.type-fighting { background-color: var(--type-fighting); }
+.type-poison   { background-color: var(--type-poison); }
+.type-ground   { background-color: var(--type-ground); }
+.type-flying   { background-color: var(--type-flying); }
+.type-psychic  { background-color: var(--type-psychic); }
+.type-bug      { background-color: var(--type-bug); }
+.type-rock     { background-color: var(--type-rock); }
+.type-ghost    { background-color: var(--type-ghost); }
+.type-dragon   { background-color: var(--type-dragon); }
+.type-dark     { background-color: var(--type-dark); }
+.type-steel    { background-color: var(--type-steel); }
+.type-fairy    { background-color: var(--type-fairy); }
+
+
+/* Light backgrounds */
+
+.type-normal,
+.type-electric,
+.type-grass,
+.type-ice,
+.type-ground,
+.type-flying,
+.type-bug,
+.type-rock,
+.type-steel,
+.type-fairy {
+    color: #1f1f1f;
+}
+
+
+/* Dark backgrounds */
+
+.type-fire,
+.type-water,
+.type-fighting,
+.type-poison,
+.type-psychic,
+.type-ghost,
+.type-dragon,
+.type-dark {
+    color: #ffffff;
 }
