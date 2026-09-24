@@ -3,16 +3,20 @@ import '../style/components/Pokecard.css'
 import { useParams } from 'react-router-dom';
 
 import{
+    getPokemonId,
     getPokemonType,
     getAllMoveTypes,
 
 } from '../services/Pokedex';
+
+import {getPokemonAnimation} from '../util/PokeAnimation';
 
 import { useState, useEffect } from 'react';
 
 
 function Pokecard({data}){
 
+    const [pokemonId, setPokemonId] = useState(null);
     const [type, setType] = useState([]);
     const [moveTypes, setMoveTypes] = useState([]);
 
@@ -23,8 +27,12 @@ function Pokecard({data}){
                 if (data.pokemon){
                     const types = await getPokemonType(data.pokemon);
                     setType(types);
+                    
+                    const id = await getPokemonId(data.pokemon);
+                    setPokemonId(id);
                 } else {
                     setType([]);
+                    setPokemonId(null);
                 }
     
                 if (data.moves?.some((move) => move)) {
@@ -39,6 +47,8 @@ function Pokecard({data}){
             getDetailedData();
         }, [data]);
 
+
+    console.log("Pokemon Id: ", pokemonId);
 
     return (
         <div className='pokecard'>
@@ -64,7 +74,15 @@ function Pokecard({data}){
 
             <hr />
 
-                
+            <div className='pokecard-pokemon-display'>
+                {data.pokemon && pokemonId && (
+                    <img 
+                        className='pokecard-pokemon-img'
+                        src={getPokemonAnimation(pokemonId)} 
+                        alt={data.pokemon}
+                    />
+                )}
+            </div>
 
             <hr />
 

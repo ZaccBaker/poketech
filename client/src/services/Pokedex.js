@@ -19,6 +19,20 @@ export const getPokemonByGeneration = async(generation) => {
 };
 
 
+export const getPokemonId = async(pokemon) => {
+    
+    const response = await fetch(`${POKEAPI}/pokemon/${pokemon}`);
+
+    if (!response.ok){
+        throw new Error("Failed to retrieve Pokemon ID");
+    }
+
+    const data = await response.json();
+
+    return data.id;
+};
+
+
 export const getMovesByPokemon = async(pokemon) => {
 
     const response = await fetch(`${POKEAPI}/pokemon/${pokemon}`);
