@@ -29,6 +29,18 @@ function SelectorDropdown({info, value, onSelect}){
         }
     };
 
+    const handleClear = (e) => {
+        e.stopPropagation();
+
+        setSearch("");
+        setSelected(info.type);
+        setIsOpen(false);
+
+        if (onSelect) {
+            onSelect(null);
+        }
+    };
+
 
     useEffect(() => {
         const getOptions = async () => {
@@ -75,7 +87,6 @@ function SelectorDropdown({info, value, onSelect}){
             <input 
                 type='text'
                 className='dropdown-input'
-                // ref={dropdownRef}
                 value={value || search}
                 placeholder={selected}
                 onChange={(e) => {
@@ -85,6 +96,15 @@ function SelectorDropdown({info, value, onSelect}){
                 onFocus={() => setIsOpen(true)}
             />
 
+            {value && (
+                <span
+                    className='dropdown-clear'
+                    onClick={handleClear}
+                >
+                    ⟲
+                </span>
+            )}
+            
             <span
                 className={`dropdown-arrow ${isOpen ? "open" : ""}`}
                 onClick={() => setIsOpen(!isOpen)}
