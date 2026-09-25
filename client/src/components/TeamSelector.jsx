@@ -1,30 +1,17 @@
 import '../style/components/TeamSelector.css';
 
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
+import{
+    getMovesByPokemon
+} from '../services/Attackdex';
 
 import SelectorDropdown from './SelectorDropdown';
 
 
-function TeamSelector({number, member, onChange}){
-    
-    const {generation} = useParams();
+function TeamSelector({number, member, pokemonOptions, onChange}){
 
-    const generations = {
-        "Gen 1": "generation-i",
-        "Gen 2": "generation-ii",
-        "Gen 3": "generation-iii",
-        "Gen 4": "generation-iv",
-        "Gen 5": "generation-v",
-        "Gen 6": "generation-vi",
-        "Gen 7": "generation-vii",
-        "Gen 8": "generation-viii",
-        "Gen 9": "generation-ix"
-    };
-
-    const apiGeneration = generations[generation];
-
-    // console.log("API Generation: ", apiGeneration);
+    const [moveOptions, setMoveOptions] = useState([]);
 
     const handlePokemonSelect = (pokemon) => {
         onChange({
@@ -43,22 +30,47 @@ function TeamSelector({number, member, onChange}){
     };
 
 
+    useEffect(() => {
+        const loadMoves = async () => {
+
+            if (!member.pokemon) {
+                setMoveOptions([]);
+                return;
+            }
+
+            try {
+                const moves = await getMovesByPokemon(member.pokemon);
+
+                setMoveOptions(moves);
+            } catch (error) {
+                console.error(
+                    `Failed to retrieve moves for ${member.pokemon}`,
+                    error
+                );
+            }
+
+        };
+
+        loadMoves();
+    }, [member.pokemon]);
 
 
     return (
         <div className='team-selector'>
             <div className='selector-header'>
-                <h4>Pokémon {number}</h4>
+                <span className='selector-number'>
+                    {String(number).padStart(2, "0")}
+                </span>
+
+                <h4>Party Slot</h4>
             </div>
 
             <div className='selector-content'>
                 <div className='selector-name'>
                     <SelectorDropdown 
-                        info={{
-                            type: "Name",
-                            generation: apiGeneration
-                        }}
+                        options={pokemonOptions}
                         value={member.pokemon}
+                        placeholder="Select Pokemon"
                         onSelect={handlePokemonSelect}
                     />
                 </div>
@@ -66,13 +78,17 @@ function TeamSelector({number, member, onChange}){
                     {member.moves.map((move, index) => (
                         <SelectorDropdown 
                             key={index}
-                            info={{
-                                type: "Move",
-                                name: member.pokemon,
-                                number: index + 1
-                            }}
+                            // info={{
+                            //     type: "Move",
+                            //     name: member.pokemon,
+                            //     number: index + 1
+                            // }}
+                            options={moveOptions}
                             value={move}
-                            onSelect={(selectedMove) => handleMoveSelect(index, selectedMove)}
+                            placeholder={`Move ${index + 1}`}
+                            onSelect={(selectedMove) => 
+                                handleMoveSelect(index, selectedMove)
+                            }
                         />
                     ))}
                 </div>

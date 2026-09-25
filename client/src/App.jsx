@@ -1,12 +1,9 @@
 import { useState } from 'react'
 import { Route, Routes} from 'react-router-dom'
 
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-
 import Navbar from './components/Navbar'
 import Home from './pages/Home';
+import Generation from './pages/Generation'
 import Dashboard from './pages/Dashboard'
 
 import './App.css'
@@ -23,7 +20,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
 
-          <Route path='/dash/:generation' element={<Dashboard />} />
+          <Route path='/:generation' element={<Generation />} />
+          <Route path='/:generation/:game/dashboard' element={<Dashboard />} />
         </Routes>
 
       </div>

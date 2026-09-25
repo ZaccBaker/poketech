@@ -1,19 +1,49 @@
 import '../style/components/TeamEdit.css';
 
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import TeamSelector from './TeamSelector';
+
+import { 
+    getGameVersionGroup
+} from '../services/Games';
+
+import {
+    getPokedexRegionByVersionGroup,
+    getPokemonByPokedexRegion
+} from '../services/Pokedex';
 
 
 function TeamEdit({team, setTeam, onClose}){
 
-    const updateTeamMember = (index, data) => {
-        setTeam(prevTeam =>
-            prevTeam.map((member, i) =>
-                i === index
-                    ? {...member, ...data}
-                    : member
-            )
-        );
-    };
+    const { game } = useParams();
+
+    const [pokemonOptions, setPokemonOptions] = useState([]);
+
+    useEffect(() => {
+        const loadGameData = async () => {
+            if (!game) {
+                return;
+            }
+
+            const versionGroup = await getGameVersionGroup(game);
+            const pokedexRegions = await getPokedexRegionByVersionGroup(versionGroup);
+
+            const pokemonLists = await Promise.all(
+                pokedexRegions.map((region) => 
+                    getPokemonByPokedexRegion(region)
+                )
+            );
+
+            const pokemon = pokemonLists.flat();
+
+            setPokemonOptions(pokemon);
+        };
+
+        loadGameData();
+    }, [game]);
+    
 
     return (
         <div 
@@ -35,6 +65,7 @@ function TeamEdit({team, setTeam, onClose}){
                             key={index}
                             number={index + 1}
                             member={member}
+                            pokemonOptions={pokemonOptions}
                             onChange={(data) => {
                                 setTeam(prev =>
                                     prev.map((item, i) =>

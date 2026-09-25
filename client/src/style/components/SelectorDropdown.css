@@ -1,93 +1,241 @@
 .selector-dropdown {
     position: relative;
+    z-index: 1;
+
     width: 100%;
     min-width: 0;
-    box-sizing: border-box;
 }
+
+.selector-dropdown:focus-within {
+    z-index: 100;
+}
+
+
+/* =========================
+   Input
+========================= */
 
 .dropdown-input {
     width: 100%;
-    padding: 10px 35px 10px 40px;
-    box-sizing: border-box;
+    height: 42px;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding:
+        0
+        64px
+        0
+        14px;
 
-    background: var(--color-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 8px;
+
+    outline: none;
+
+    background: rgba(5, 8, 14, 0.45);
+
     color: var(--text-primary);
 
-    border: 1px solid var(--accent-thirdly);
-    border-radius: 5px;
+    font-family: inherit;
+    font-size: 0.88rem;
 
-    cursor: pointer;
+    transition:
+        border-color 0.15s ease,
+        background 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
-.dropdown-clear{
+.dropdown-input::placeholder {
+    color: rgba(226, 232, 240, 0.35);
+}
+
+.dropdown-input:hover {
+    border-color: rgba(0, 240, 255, 0.22);
+
+    background: rgba(5, 8, 14, 0.65);
+}
+
+.dropdown-input:focus {
+    border-color: var(--accent-secondary);
+
+    background: rgba(5, 8, 14, 0.8);
+
+    box-shadow:
+        0 0 0 3px rgba(0, 240, 255, 0.07),
+        0 0 14px rgba(0, 240, 255, 0.05);
+}
+
+
+/* =========================
+   Clear / Arrow
+========================= */
+
+.dropdown-clear,
+.dropdown-arrow {
     position: absolute;
 
-    left: 12px;
     top: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     transform: translateY(-50%);
 
     cursor: pointer;
+
     user-select: none;
 
-    font-size: 18px;
-    line-height: 1;
-
-    z-index: 2;
+    z-index: 3;
 }
 
-.dropdown-arrow{
-    position: absolute;
+.dropdown-clear {
+    right: 35px;
 
-    right: 12px;
-    top: 50%;
+    width: 24px;
+    height: 24px;
 
-    transition: transform 0.2s ease;
-    transform: translateY(-50%);
+    color: rgba(226, 232, 240, 0.45);
 
-    cursor: pointer;
-    user-select: none;
+    font-size: 0.9rem;
 }
 
-.dropdown-arrow.open{
-    transform: translateY(-50%) rotate(180deg);
+.dropdown-clear:hover {
+    color: var(--accent-primary);
 }
+
+.dropdown-arrow {
+    right: 11px;
+
+    color: rgba(226, 232, 240, 0.5);
+
+    font-size: 0.65rem;
+
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
+}
+
+.dropdown-arrow.open {
+    transform:
+        translateY(-50%)
+        rotate(180deg);
+
+    color: var(--accent-secondary);
+}
+
+
+/* =========================
+   Dropdown Menu
+========================= */
 
 .dropdown-menu {
     position: absolute;
-    top: 100%;
+
+    top: calc(100% + 6px);
     left: 0;
 
-    max-height: 250px;
     width: 100%;
-    box-sizing: border-box;
-
-    background: var(--color-secondary);
-    border: 1px solid var(--accent-thirdly);
-    border-radius: 5px;
+    max-height: 220px;
 
     overflow-y: auto;
-    z-index: 10;
+    overflow-x: hidden;
+
+    padding: 6px;
+
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    border-radius: 9px;
+
+    background: #111824;
+
+    box-shadow:
+        0 16px 30px rgba(0, 0, 0, 0.45),
+        0 0 20px rgba(0, 240, 255, 0.04);
+
+    z-index: 1000;
+
+    /*
+     * Standard scrollbar styling.
+     * Used by modern Firefox and supported
+     * by newer Chromium browsers.
+     */
+    scrollbar-width: thin;
+    scrollbar-color:
+        rgba(226, 232, 240, 0.22)
+        #111824;
 }
+
+
+/* =========================
+   Options
+========================= */
 
 .dropdown-option {
     display: block;
+
     width: 100%;
 
-    padding: 10px 14px;
+    padding: 10px 11px;
 
-    background: none;
-    color: var(--text-primary);
     border: none;
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: rgba(226, 232, 240, 0.8);
+
+    font-family: inherit;
+    font-size: 0.85rem;
 
     text-align: left;
+
     cursor: pointer;
+
+    transition:
+        background 0.12s ease,
+        color 0.12s ease,
+        padding-left 0.12s ease;
 }
 
 .dropdown-option:hover {
-    background: var(--accent-thirdly);
+    padding-left: 15px;
+
+    background: rgba(0, 240, 255, 0.08);
+
+    color: var(--accent-secondary);
+}
+
+
+/* =========================
+   Scrollbar
+========================= */
+
+/* Scrollbar width */
+.dropdown-menu::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Scrollbar background */
+.dropdown-menu::-webkit-scrollbar-track {
+    background: #111824;
+
+    border-radius: 0 9px 9px 0;
+}
+
+/* Draggable scrollbar */
+.dropdown-menu::-webkit-scrollbar-thumb {
+    background: rgba(226, 232, 240, 0.22);
+
+    border: 2px solid #111824;
+    border-radius: 999px;
+}
+
+/* Hover */
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 240, 255, 0.45);
+
+    border: 2px solid #111824;
+}
+
+/* Prevent white corner from appearing */
+.dropdown-menu::-webkit-scrollbar-corner {
+    background: #111824;
 }
