@@ -15,5 +15,33 @@ export const getGamesByGeneration = async(generation) => {
 
     const data = await response.json();
 
-    return data.version_groups.map((game) => capitalizeWords(game.name.split("-")));
+    const games = await Promise.all(
+        data.version_groups.map(async (group) => {
+
+            const response = await fetch(group.url);
+
+            if (!response.ok) {
+                throw new Error("Failed to retrieve version group");
+            }
+
+            const groupData = await response.json();
+
+            return groupData.versions;
+        })
+    );
+
+    return games.flatMap((group) =>
+        group.map((game) => ({
+            name: formatGameName(game.name),
+            value: game.name
+        }))
+    );
+};
+
+
+const formatGameName = (name) => {
+    return name
+        .split("-")
+        .map(word => capitalizeWords(word))
+        .join(" ");
 };
