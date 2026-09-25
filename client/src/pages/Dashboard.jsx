@@ -4,15 +4,19 @@ import { useParams } from 'react-router-dom';
 
 import Team from '../sections/Team';
 
+import { generations } from '../util/Generations';
+
 
 function Dashboard(){
 
     const { generation } = useParams();
 
+    const gen = generations[generation];
+
 
     return (
         <div className='page dashboard'>
-            <h1>{generation}</h1>
+            <h1>{gen.name}</h1>
 
             <Team />
 

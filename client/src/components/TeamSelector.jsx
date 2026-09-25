@@ -5,26 +5,14 @@ import { useParams } from 'react-router-dom';
 
 import SelectorDropdown from './SelectorDropdown';
 
+import { generations } from '../util/Generations';
+
 
 function TeamSelector({number, member, onChange}){
     
     const {generation} = useParams();
 
-    const generations = {
-        "Gen 1": "generation-i",
-        "Gen 2": "generation-ii",
-        "Gen 3": "generation-iii",
-        "Gen 4": "generation-iv",
-        "Gen 5": "generation-v",
-        "Gen 6": "generation-vi",
-        "Gen 7": "generation-vii",
-        "Gen 8": "generation-viii",
-        "Gen 9": "generation-ix"
-    };
-
-    const apiGeneration = generations[generation];
-
-    // console.log("API Generation: ", apiGeneration);
+    const gen = generations[generation];
 
     const handlePokemonSelect = (pokemon) => {
         onChange({
@@ -56,7 +44,7 @@ function TeamSelector({number, member, onChange}){
                     <SelectorDropdown 
                         info={{
                             type: "Name",
-                            generation: apiGeneration
+                            generation: gen.api
                         }}
                         value={member.pokemon}
                         onSelect={handlePokemonSelect}

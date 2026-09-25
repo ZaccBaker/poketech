@@ -1,0 +1,27 @@
+Dashboard MK1
+
+- Create fixed sidebar with the following sections
+    > Team Coverage (which types the team is effective against)
+    > Individual pokemon effectiveness/weaknesses
+        -> Card will "flip" over
+    > VS. Tab that covers rival fights, gym fights, and elite four fights
+        ## THESE ITEMS ARE NOT AS SIGNIFICANT AND CAN BE ADDED LATER
+            > PokeDex
+            > Routes/Walkthrough
+                > Image of route
+                > Pokemon that can be caught on the specific Route
+                > Items on the route?
+
+- Update routes
+    > Base route should be to choosing specific game
+    > Example route: generation/firered/team
+
+- Add game specific logic
+    > Example: FireRed has Gen 1 pokemon, select Gen 2 and Gen 3 pokemon too
+
+- Update Services
+    > Pokedex contains
+        -> Anything related to Pokemon and their data
+
+    >Attackdex contains
+        -> Anything related to moves and their data

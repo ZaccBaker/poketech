@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 import TeamEdit from '../components/TeamEdit';
 import Pokecard from '../components/Pokecard';
-import { getPokemonByGeneration } from '../services/Pokedex';
 
 
 function Team(){
@@ -23,8 +22,7 @@ function Team(){
     const onShowEditClick = () => {
         setShowEdit(true);
     };
-
-    console.log("Team: ", team);
+    
 
     return (
         <>
