@@ -74,7 +74,7 @@ function SelectorDropdown({options = [], value, placeholder = "Select", onSelect
                 onFocus={() => setIsOpen(true)}
             />
 
-            {value && (
+            {(value || search) && (
                 <span
                     className='dropdown-clear'
                     onClick={handleClear}
