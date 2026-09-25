@@ -1,0 +1,36 @@
+.team-edit{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+    backdrop-filter: blur(10px);
+}
+
+.edit-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+.edit-main{
+    padding: 20px;
+    border-radius: 20px;
+    background: var(--color-primary);
+}
+
+.edit-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    
+    gap: 25px;
+}
