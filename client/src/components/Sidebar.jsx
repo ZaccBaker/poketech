@@ -11,9 +11,18 @@ function Sidebar(){
     return (
         <aside className='sidebar'>
             <div 
+                className='sidebar-teamDashboard'
+                data-label='Team Dashboard'
+            >
+                
+                ▦
+            </div>
+            
+            <div 
                 className='sidebar-pokemonCoverage'
                 data-label='Pokémon Coverage'
             >
+                
                 💪
             </div>
             

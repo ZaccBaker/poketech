@@ -40,6 +40,7 @@
    Navigation Items
 ========================= */
 
+.sidebar-teamDashboard,
 .sidebar-pokemonCoverage,
 .sidebar-teamCoverage,
 .sidebar-battles,
@@ -77,6 +78,7 @@
    Hover
 ========================= */
 
+.sidebar-teamDashboard:hover,
 .sidebar-pokemonCoverage:hover,
 .sidebar-teamCoverage:hover,
 .sidebar-battles:hover,
