@@ -3,6 +3,7 @@ import '../style/pages/Dashboard.css';
 import { useParams } from 'react-router-dom';
 
 import Team from '../sections/Team';
+import Sidebar from '../components/Sidebar';
 
 import { generations } from '../util/Generations';
 import { capitalizeWords } from '../util/capitalize';
@@ -29,6 +30,7 @@ function Dashboard(){
             </div>
 
             <Team />
+            <Sidebar />
         </div>
     );
 }

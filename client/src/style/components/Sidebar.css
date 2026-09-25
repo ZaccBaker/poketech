@@ -1,0 +1,164 @@
+/* =========================
+   Sidebar
+========================= */
+
+.sidebar {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 8px;
+
+    width: 64px;
+
+    padding: 10px 8px;
+
+    border: 1px solid rgba(0, 240, 255, 0.12);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(26, 34, 48, 0.96),
+            rgba(15, 20, 28, 0.96)
+        );
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.3),
+        0 0 25px rgba(0, 240, 255, 0.03);
+
+    z-index: 10;
+}
+
+
+/* =========================
+   Navigation Items
+========================= */
+
+.sidebar-pokemonCoverage,
+.sidebar-teamCoverage,
+.sidebar-battles,
+.sidebar-routes,
+.sidebar-pokedex {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 46px;
+    height: 46px;
+
+    border: 1px solid transparent;
+    border-radius: 9px;
+
+    background: transparent;
+
+    font-size: 1.25rem;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+/* =========================
+   Hover
+========================= */
+
+.sidebar-pokemonCoverage:hover,
+.sidebar-teamCoverage:hover,
+.sidebar-battles:hover,
+.sidebar-routes:hover,
+.sidebar-pokedex:hover {
+    transform: translateX(-3px);
+
+    border-color: rgba(0, 240, 255, 0.16);
+
+    background: rgba(0, 240, 255, 0.06);
+
+    box-shadow:
+        0 0 12px rgba(0, 240, 255, 0.06);
+}
+
+
+/* =========================
+   Divider
+========================= */
+
+.sidebar > div:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+
+    left: 8px;
+    right: 8px;
+    bottom: -5px;
+
+    height: 1px;
+
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.sidebar > div::before {
+    content: attr(data-label);
+
+    position: absolute;
+
+    top: 50%;
+    right: calc(100% + 12px);
+
+    transform:
+        translateY(-50%)
+        translateX(5px);
+
+    padding: 7px 10px;
+
+    border: 1px solid rgba(0, 240, 255, 0.12);
+    border-radius: 6px;
+
+    background: var(--color-secondary);
+
+    color: var(--text-primary);
+
+    font-size: 0.7rem;
+    font-weight: 600;
+
+    letter-spacing: 0.04em;
+
+    white-space: nowrap;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    box-shadow:
+        0 6px 16px rgba(0, 0, 0, 0.35);
+
+    transition:
+        opacity 0.15s ease,
+        transform 0.15s ease,
+        visibility 0.15s ease;
+}
+
+
+.sidebar > div:hover::before {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateY(-50%)
+        translateX(0);
+}
