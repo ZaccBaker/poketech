@@ -2,20 +2,10 @@ import '../style/components/Navbar.css'
 
 import { Link } from 'react-router-dom';
 
+import { generations } from '../util/Generations';
+
 
 function Navbar(){
-
-    const gens = [
-        { name: "Gen 1", value: "gen1" },
-        { name: "Gen 2", value: "gen2" },
-        { name: "Gen 3", value: "gen3" },
-        { name: "Gen 4", value: "gen4" },
-        { name: "Gen 5", value: "gen5" },
-        { name: "Gen 6", value: "gen6" },
-        { name: "Gen 7", value: "gen7" },
-        { name: "Gen 8", value: "gen8" },
-        { name: "Gen 9", value: "gen9" }
-    ];
 
     const homeClick = (e) => {
         if (location.pathname === "/"){
@@ -36,11 +26,10 @@ function Navbar(){
 
                 <div className='nav gens'>
                     <ul>
-                        {gens.map((gen) => (
+                        {Object.values(generations).map((gen) => (
                             <Link 
-                                key={gen.value} 
-                                to={`/${gen.value}`}
-                                generation={gen.name}
+                                key={gen.id} 
+                                to={`/${gen.param}`}
                             >
                                 {gen.name}
                             </Link>
