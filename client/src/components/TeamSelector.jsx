@@ -58,7 +58,11 @@ function TeamSelector({number, member, pokemonOptions, onChange}){
     return (
         <div className='team-selector'>
             <div className='selector-header'>
-                <h4>Pokémon {number}</h4>
+                <span className='selector-number'>
+                    {String(number).padStart(2, "0")}
+                </span>
+
+                <h4>Party Slot</h4>
             </div>
 
             <div className='selector-content'>
