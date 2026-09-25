@@ -1,21 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
 import '../style/components/SelectorDropdown.css';
 
-import{
-    getPokemonByGeneration
-} from '../services/Pokedex';
+import { useEffect, useRef, useState } from 'react';
 
-import{
-    getMovesByPokemon
-} from '../services/Attackdex';
 
-function SelectorDropdown({info, value, onSelect}){
+function SelectorDropdown({options = [], value, placeholder = "Select", onSelect}){
 
     const [isOpen, setIsOpen] = useState(false);
-    const [selected, setSelected] = useState(info.type);
-    const [options, setOptions] = useState([]);
     const [search, setSearch] = useState("");
-    
+
     const dropdownRef = useRef(null);
 
     const filteredOptions = options.filter((option) =>
@@ -23,8 +15,7 @@ function SelectorDropdown({info, value, onSelect}){
     );
 
     const handleSelect = (option) => {
-        setSelected(option);
-        setSearch(option);
+        setSearch("");
         setIsOpen(false);
 
         if (onSelect) {
@@ -36,32 +27,12 @@ function SelectorDropdown({info, value, onSelect}){
         e.stopPropagation();
 
         setSearch("");
-        setSelected(info.type);
         setIsOpen(false);
 
         if (onSelect) {
             onSelect(null);
         }
     };
-
-
-    useEffect(() => {
-        const getOptions = async () => {
-            let data = [];
-
-            if (info.type === "Name"){
-                data = await getPokemonByGeneration(info.generation);
-            }
-
-            if (info.type === "Move" && info.name) {
-                data = await getMovesByPokemon(info.name);
-            }
-
-            setOptions(data);
-        };
-
-        getOptions();
-    }, [info.type, info.generation, info.name]);
 
 
     useEffect(() => {
@@ -91,10 +62,14 @@ function SelectorDropdown({info, value, onSelect}){
                 type='text'
                 className='dropdown-input'
                 value={value || search}
-                placeholder={selected}
+                placeholder={placeholder}
                 onChange={(e) => {
                     setSearch(e.target.value);
                     setIsOpen(true);
+
+                    if (value && onSelect) {
+                        onSelect(null);
+                    }
                 }}
                 onFocus={() => setIsOpen(true)}
             />

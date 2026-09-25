@@ -40,8 +40,6 @@ function Generation(){
 
         gamesByGen();
     }, [gen]);
-    
-    console.log("Games: ", games);
 
 
     return (

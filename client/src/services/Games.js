@@ -39,6 +39,23 @@ export const getGamesByGeneration = async(generation) => {
 };
 
 
+export const getGameVersionGroup = async(game) => {
+
+    const response = await fetch(`${POKEAPI}/version/${game}`);
+
+    if (!response.ok) {
+        throw new Error("Failed to retrieve Game Version Group");
+    }
+
+    const data = await response.json();
+
+    return data.version_group.name;
+}
+
+
+
+// ========================================
+
 const formatGameName = (name) => {
     return name
         .split("-")

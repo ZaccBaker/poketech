@@ -13,6 +13,10 @@ Comprehensive tracker for project goals, feature requests, and completed.
 
 - [ ] Add game specific logic
     > Example: FireRed has Gen 1 pokemon, select Gen 2 and Gen 3 pokemon too
+
+- [ ] SelectorDropdown Update
+    > Find a way, if it is possible, to not render 30 dropdowns independently
+    > Find a way to streamline the process and make it more efficient
             
 
 ## 📋 Backlog / Upcoming Features
