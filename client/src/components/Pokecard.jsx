@@ -4,10 +4,13 @@ import { useParams } from 'react-router-dom';
 
 import{
     getPokemonId,
-    getPokemonType,
-    getAllMoveTypes,
-
+    getPokemonType
 } from '../services/Pokedex';
+
+import{
+    getAllMoveTypes
+} from '../services/Attackdex';
+
 
 import {getPokemonAnimation} from '../util/PokeAnimation';
 
@@ -47,8 +50,6 @@ function Pokecard({data}){
             getDetailedData();
         }, [data]);
 
-
-    console.log("Pokemon Id: ", pokemonId);
 
     return (
         <div className='pokecard'>

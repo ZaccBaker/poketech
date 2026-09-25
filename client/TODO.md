@@ -13,6 +13,9 @@ Comprehensive tracker for project goals, feature requests, and completed.
 
 - [ ] Add game specific logic
     > Example: FireRed has Gen 1 pokemon, select Gen 2 and Gen 3 pokemon too
+
+- [ ] Update the Pokedex service
+        > Any function for Moves goes to Attackdex service
             
 
 ## 📋 Backlog / Upcoming Features

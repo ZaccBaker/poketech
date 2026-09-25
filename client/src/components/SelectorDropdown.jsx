@@ -2,9 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import '../style/components/SelectorDropdown.css';
 
 import{
-    getPokemonByGeneration,
-    getMovesByPokemon
+    getPokemonByGeneration
 } from '../services/Pokedex';
+
+import{
+    getMovesByPokemon
+} from '../services/Attackdex';
 
 function SelectorDropdown({info, value, onSelect}){
 
