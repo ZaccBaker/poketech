@@ -13,9 +13,6 @@ Comprehensive tracker for project goals, feature requests, and completed.
 
 - [ ] Add game specific logic
     > Example: FireRed has Gen 1 pokemon, select Gen 2 and Gen 3 pokemon too
-
-- [ ] Update the Pokedex service
-        > Any function for Moves goes to Attackdex service
             
 
 ## 📋 Backlog / Upcoming Features
@@ -25,7 +22,10 @@ Comprehensive tracker for project goals, feature requests, and completed.
         -> Pokemon that can be caught on the specific Route
         -> Items on the route?
 
+
 ## ✅ Completed
 - [x] Update routes
     > Base route should be to choosing specific game
     > Example route: generation/firered/team~~.
+- [x] Update the Pokedex service
+        > Any function for Moves goes to Attackdex service
