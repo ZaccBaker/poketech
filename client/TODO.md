@@ -5,11 +5,7 @@ Comprehensive tracker for project goals, feature requests, and completed.
 ---
 
 ## 🛠️ In Progress
-- [ ] Dashboard sections fully functional
-    ~~> Team~~
-    ~~> Pokemon Coverage~~
-    > Team Coverage
-    > Battles
+
             
 
 ## 📋 Backlog / Upcoming Features
@@ -18,6 +14,7 @@ Comprehensive tracker for project goals, feature requests, and completed.
         -> Image of route
         -> Pokemon that can be caught on the specific Route
         -> Items on the route?
+- [ ] > Battles
 
 - [ ] Add game specific logic
     > Example: FireRed has Gen 1 pokemon, select Gen 2 and Gen 3 pokemon too
@@ -45,3 +42,7 @@ Comprehensive tracker for project goals, feature requests, and completed.
     > Battles
     > Routes
     > Pokedex
+- [x] Dashboard sections fully functional
+    ~~> Team~~
+    ~~> Pokemon Coverage~~
+    ~~> Team Coverage~~
