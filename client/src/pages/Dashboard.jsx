@@ -1,5 +1,6 @@
 import '../style/pages/Dashboard.css';
 
+import { useState } from 'react';
 import { Outlet, useParams } from 'react-router-dom';
 
 import Sidebar from '../components/Sidebar';
@@ -14,6 +15,33 @@ function Dashboard(){
 
     const gen = generations[generation];
     const gameName = capitalizeWords(game);
+
+    const [team, setTeam] = useState([
+        {
+            pokemon: null,
+            moves: [null, null, null, null]
+        },
+        {
+            pokemon: null,
+            moves: [null, null, null, null]
+        },
+        {
+            pokemon: null,
+            moves: [null, null, null, null]
+        },
+        {
+            pokemon: null,
+            moves: [null, null, null, null]
+        },
+        {
+            pokemon: null,
+            moves: [null, null, null, null]
+        },
+        {
+            pokemon: null,
+            moves: [null, null, null, null]
+        }
+    ]);
 
 
     return (
@@ -31,7 +59,12 @@ function Dashboard(){
             <Sidebar />
 
             <div className='dashboard-content'>
-                <Outlet />
+                <Outlet 
+                    context={{
+                        team,
+                        setTeam
+                    }}
+                />
             </div>
             
         </div>

@@ -2,6 +2,9 @@ import '../style/components/Pokecard.css'
 
 import { useParams } from 'react-router-dom';
 
+import EffectiveAgainst from './EffectiveAgainst';
+import Weaknesses from './Weaknesses';
+
 import{
     getPokemonId,
     getPokemonType
@@ -17,7 +20,7 @@ import {getPokemonAnimation} from '../util/PokeAnimation';
 import { useState, useEffect } from 'react';
 
 
-function Pokecard({data}){
+function Pokecard({data, showCoverage = false}){
 
     const [pokemonId, setPokemonId] = useState(null);
     const [type, setType] = useState([]);
@@ -106,6 +109,14 @@ function Pokecard({data}){
                 ))}
             </div>
             
+            {showCoverage && (
+                <div className='pokecard-coverage'>
+                    <EffectiveAgainst 
+                        moves={data.moves}
+                        moveTypes={moveTypes}
+                    />
+                </div>
+            )}
 
         </div>
     );
