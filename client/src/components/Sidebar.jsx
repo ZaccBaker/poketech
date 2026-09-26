@@ -1,58 +1,68 @@
 import '../style/components/Sidebar.css'
 
-import { Link } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 
 
 
 function Sidebar(){
 
+    const {generation, game} = useParams();
+
+    const baseRoute = `/${generation}/${game}`;
     
 
     return (
         <aside className='sidebar'>
-            <div 
-                className='sidebar-teamDashboard'
+
+            <NavLink
+                to='.'
+                end
+                className='sidebar-link'
                 data-label='Team Dashboard'
             >
-                
                 ▦
-            </div>
-            
-            <div 
-                className='sidebar-pokemonCoverage'
+            </NavLink>
+
+            <NavLink
+                to='pokemon-coverage'
+                className='sidebar-link'
                 data-label='Pokémon Coverage'
             >
-                
                 💪
-            </div>
-            
-            <div
-                className='sidebar-teamCoverage'
+            </NavLink>
+
+            <NavLink
+                to='team-coverage'
+                className='sidebar-link'
                 data-label='Team Coverage'
             >
                 ☯️
-            </div>
+            </NavLink>
 
-            <div
-                className='sidebar-battles'
+            <NavLink
+                to='battles'
+                className='sidebar-link'
                 data-label='Major Battles'
             >
                 ⚔️
-            </div>
+            </NavLink>
 
-            <div
-                className='sidebar-routes'
+            <NavLink
+                to='routes'
+                className='sidebar-link'
                 data-label='Routes'
             >
                 🗺️
-            </div>
+            </NavLink>
 
-            <div
-                className='sidebar-pokedex'
+            <NavLink
+                to='pokedex'
+                className='sidebar-link'
                 data-label='Pokédex'
             >
                 📱
-            </div>
+            </NavLink>
+
         </aside>
     );
 }

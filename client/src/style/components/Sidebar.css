@@ -4,9 +4,11 @@
 
 .sidebar {
     position: fixed;
+
     top: 50%;
-    transform: translateY(-50%);
     right: 10px;
+
+    transform: translateY(-50%);
 
     display: flex;
     flex-direction: column;
@@ -32,20 +34,15 @@
         0 12px 30px rgba(0, 0, 0, 0.3),
         0 0 25px rgba(0, 240, 255, 0.03);
 
-    z-index: 10;
+    z-index: 100;
 }
 
 
 /* =========================
-   Navigation Items
+   Navigation Links
 ========================= */
 
-.sidebar-teamDashboard,
-.sidebar-pokemonCoverage,
-.sidebar-teamCoverage,
-.sidebar-battles,
-.sidebar-routes,
-.sidebar-pokedex {
+.sidebar-link {
     position: relative;
 
     display: flex;
@@ -55,15 +52,19 @@
     width: 46px;
     height: 46px;
 
+    flex-shrink: 0;
+
     border: 1px solid transparent;
     border-radius: 9px;
 
     background: transparent;
 
+    color: var(--text-primary);
+    text-decoration: none;
+
     font-size: 1.25rem;
 
     cursor: pointer;
-
     user-select: none;
 
     transition:
@@ -78,12 +79,7 @@
    Hover
 ========================= */
 
-.sidebar-teamDashboard:hover,
-.sidebar-pokemonCoverage:hover,
-.sidebar-teamCoverage:hover,
-.sidebar-battles:hover,
-.sidebar-routes:hover,
-.sidebar-pokedex:hover {
+.sidebar-link:hover {
     transform: translateX(-3px);
 
     border-color: rgba(0, 240, 255, 0.16);
@@ -96,24 +92,67 @@
 
 
 /* =========================
-   Divider
+   Active Page
 ========================= */
 
-.sidebar > div:not(:last-child)::after {
+.sidebar-link.active {
+    border-color: rgba(243, 205, 75, 0.25);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(243, 205, 75, 0.10),
+            rgba(243, 205, 75, 0.04)
+        );
+
+    box-shadow:
+        0 0 12px rgba(243, 205, 75, 0.06);
+}
+
+
+/* Active page indicator */
+
+.sidebar-link.active::after {
     content: "";
 
     position: absolute;
 
-    left: 8px;
-    right: 8px;
-    bottom: -5px;
+    right: -6px;
+    top: 50%;
 
-    height: 1px;
+    width: 3px;
+    height: 20px;
 
-    background: rgba(255, 255, 255, 0.045);
+    transform: translateY(-50%);
+
+    border-radius: 3px;
+
+    background: var(--accent-primary);
+
+    box-shadow:
+        0 0 8px rgba(243, 205, 75, 0.4);
 }
 
-.sidebar > div::before {
+
+/* =========================
+   Dividers
+========================= */
+
+.sidebar-link:not(:last-child) {
+    margin-bottom: 1px;
+}
+
+.sidebar-link:not(:last-child)::before {
+    /* Tooltip also uses ::before, so divider
+       is handled by the sidebar gap instead. */
+}
+
+
+/* =========================
+   Tooltip
+========================= */
+
+.sidebar-link::before {
     content: attr(data-label);
 
     position: absolute;
@@ -149,6 +188,8 @@
     box-shadow:
         0 6px 16px rgba(0, 0, 0, 0.35);
 
+    z-index: 101;
+
     transition:
         opacity 0.15s ease,
         transform 0.15s ease,
@@ -156,7 +197,7 @@
 }
 
 
-.sidebar > div:hover::before {
+.sidebar-link:hover::before {
     opacity: 1;
     visibility: visible;
 

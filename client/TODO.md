@@ -5,7 +5,14 @@ Comprehensive tracker for project goals, feature requests, and completed.
 ---
 
 ## 🛠️ In Progress
-
+- [ ] Create Outlet section to hold all dashboard sectinos
+- [ ] Create all Dashboard sections
+    > Team
+    > Pokemon Coverage
+    > Team Coverage
+    > Battles
+    > Routes
+    > Pokedex
             
 
 ## 📋 Backlog / Upcoming Features
