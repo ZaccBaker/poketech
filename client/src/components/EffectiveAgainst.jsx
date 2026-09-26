@@ -50,6 +50,10 @@ function EffectiveAgainst({ moves = [], moveTypes = [] }) {
 
             <div className='coverage-header'>
                 <h3>Effective Against</h3>
+
+                <span className='coverage-multiplier'>
+                    ×2 DAMAGE
+                </span>
             </div>
 
             <div className='effective-list'>

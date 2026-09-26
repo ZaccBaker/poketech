@@ -89,32 +89,36 @@ function Pokecard({data, showCoverage = false}){
             </div>
 
             <hr />
-
-            <div className='pokecard-moves'>
-                {data.moves.map((move, index) => (
-                    <div
-                        className={`pokecard-move-${index}`}
-                        key={index}
-                    >
-                        {move ?? "Select Move"}
-
-                        {moveTypes[index] && (
-                            <span
-                                className={`pokecard-movetype type type-${moveTypes[index].toLowerCase()}`}
-                            >
-                                {moveTypes[index]}
-                            </span>
-                        )}
-                    </div>
-                ))}
-            </div>
             
-            {showCoverage && (
+            {showCoverage ? (
                 <div className='pokecard-coverage'>
                     <EffectiveAgainst 
                         moves={data.moves}
                         moveTypes={moveTypes}
                     />
+
+                    <Weaknesses 
+                        pokemonTypes={type}
+                    />
+                </div>
+            ) : (
+                <div className='pokecard-moves'>
+                    {data.moves.map((move, index) => (
+                        <div
+                            className={`pokecard-move-${index}`}
+                            key={index}
+                        >
+                            {move ?? "Select Move"}
+
+                            {moveTypes[index] && (
+                                <span
+                                    className={`pokecard-movetype type type-${moveTypes[index].toLowerCase()}`}
+                                >
+                                    {moveTypes[index]}
+                                </span>
+                            )}
+                        </div>
+                    ))}
                 </div>
             )}
 
