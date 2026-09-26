@@ -1,0 +1,285 @@
+/* =========================
+   Weaknesses Panel
+========================= */
+
+.weaknesses {
+    width: 100%;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(26, 34, 48, 0.72),
+            rgba(10, 14, 22, 0.88)
+        );
+
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.weaknesses .coverage-header {
+    display: flex;
+    align-items: center;
+
+    min-height: 42px;
+
+    padding: 0 16px;
+
+    position: relative;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 80, 80, 0.08),
+            transparent 55%
+        );
+}
+
+
+.weaknesses .coverage-header::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 9px;
+    bottom: 9px;
+
+    width: 3px;
+
+    border-radius: 0 2px 2px 0;
+
+    background: #ff6464;
+
+    box-shadow:
+        0 0 8px rgba(255, 100, 100, 0.35);
+}
+
+
+.weaknesses .coverage-header h3 {
+    margin: 0;
+
+    color: var(--text-primary);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================
+   Weakness Row
+========================= */
+
+.weakness-group {
+    display: grid;
+
+    grid-template-columns: 62px 1fr;
+
+    align-items: center;
+
+    min-height: 58px;
+
+    padding: 10px 16px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+
+    transition:
+        background 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+.weakness-group:last-child {
+    border-bottom: none;
+}
+
+
+.weakness-group:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+
+/* =========================
+   Multiplier
+========================= */
+
+.weakness-multiplier {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 30px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 5px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    color: rgba(226, 232, 240, 0.65);
+
+    font-size: 0.72rem;
+    font-weight: 800;
+
+    letter-spacing: 0.04em;
+}
+
+
+/* =========================
+   Type Container
+========================= */
+
+.weakness-types {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 7px;
+}
+
+
+/* =========================
+   Type Badges
+========================= */
+
+.weaknesses .type {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 58px;
+
+    padding: 4px 9px;
+
+    border: 1px solid
+        color-mix(in srgb, currentColor 40%, transparent);
+
+    border-radius: 4px;
+
+    background:
+        color-mix(in srgb, currentColor 10%, transparent);
+
+    color: inherit;
+
+    font-size: 0.64rem;
+    font-weight: 700;
+
+    letter-spacing: 0.06em;
+
+    text-transform: uppercase;
+
+    box-shadow:
+        inset 0 0 8px
+        color-mix(in srgb, currentColor 6%, transparent);
+
+    transition:
+        transform 0.15s ease,
+        background 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+.weaknesses .type:hover {
+    transform: translateY(-1px);
+
+    background:
+        color-mix(in srgb, currentColor 16%, transparent);
+
+    box-shadow:
+        0 0 10px
+        color-mix(in srgb, currentColor 15%, transparent);
+}
+
+/* =========================
+   Damage Severity
+========================= */
+
+/* 4× — major danger */
+
+.weakness-critical {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 60, 60, 0.075),
+            transparent 45%
+        );
+}
+
+.weakness-critical .weakness-multiplier {
+    border-color: rgba(255, 70, 70, 0.35);
+
+    background: rgba(255, 70, 70, 0.10);
+
+    color: #ff6b6b;
+
+    box-shadow:
+        0 0 10px rgba(255, 70, 70, 0.08);
+}
+
+
+/* 2× — normal weakness */
+
+.weakness-weak .weakness-multiplier {
+    border-color: rgba(255, 150, 80, 0.28);
+
+    background: rgba(255, 150, 80, 0.07);
+
+    color: #ffad66;
+}
+
+
+/* ½× — resistance */
+
+.weakness-resist .weakness-multiplier {
+    border-color: rgba(0, 240, 255, 0.22);
+
+    background: rgba(0, 240, 255, 0.055);
+
+    color: var(--accent-secondary);
+}
+
+
+/* ¼× — strong resistance */
+
+.weakness-strong-resist .weakness-multiplier {
+    border-color: rgba(102, 252, 241, 0.28);
+
+    background: rgba(102, 252, 241, 0.07);
+
+    color: #66fcf1;
+}
+
+
+/* Immune */
+
+.weakness-immune .weakness-multiplier {
+    width: auto;
+
+    padding: 0 8px;
+
+    border-color: rgba(180, 150, 255, 0.25);
+
+    background: rgba(180, 150, 255, 0.07);
+
+    color: #c5afff;
+
+    font-size: 0.6rem;
+
+    text-transform: uppercase;
+}

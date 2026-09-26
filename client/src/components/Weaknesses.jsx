@@ -45,26 +45,31 @@ function Weaknesses({ pokemonTypes = [] }) {
 
             <WeaknessGroup
                 label='4×'
+                level='critical'
                 types={weaknesses.x4}
             />
 
             <WeaknessGroup
                 label='2×'
+                level='weak'
                 types={weaknesses.x2}
             />
 
             <WeaknessGroup
                 label='½×'
+                level='resist'
                 types={weaknesses.x05}
             />
 
             <WeaknessGroup
                 label='¼×'
+                level='strong-resist'
                 types={weaknesses.x025}
             />
 
             <WeaknessGroup
                 label='Immune'
+                level='immune'
                 types={weaknesses.immune}
             />
 
@@ -73,14 +78,14 @@ function Weaknesses({ pokemonTypes = [] }) {
 }
 
 
-function WeaknessGroup({ label, types }) {
+function WeaknessGroup({ label, level, types }) {
 
     if (!types?.length) {
         return null;
     }
 
     return (
-        <div className='weakness-group'>
+        <div className={`weakness-group weakness-${level}`}>
 
             <span className='weakness-multiplier'>
                 {label}
