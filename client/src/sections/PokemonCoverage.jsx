@@ -14,7 +14,7 @@ function PokemonCoverage(){
 
     return (
         <section className='section pokemon-coverage'>
-            <div className='team-content'>
+            <div className='pokemon-coverage-content'>
                 {team.map((member, index) => (
                     <Pokecard 
                         key={index}
