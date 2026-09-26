@@ -5,13 +5,11 @@ Comprehensive tracker for project goals, feature requests, and completed.
 ---
 
 ## 🛠️ In Progress
-- [ ] All dashboard sections fully functional
+- [ ] Dashboard sections fully functional
     ~~> Team~~
-    > Pokemon Coverage
+    ~~> Pokemon Coverage~~
     > Team Coverage
     > Battles
-    > Routes
-    > Pokedex
             
 
 ## 📋 Backlog / Upcoming Features

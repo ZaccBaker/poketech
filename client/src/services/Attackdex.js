@@ -19,6 +19,30 @@ export const getMovesByPokemon = async(pokemon) => {
 }
 
 
+export const getMoveType = async(move) => {
+
+    if (!move) {
+        return null;
+    }
+
+    const formattedMove = move
+        .toLowerCase()
+        .trim()
+        .replaceAll(' ', '-');
+
+    const response = await fetch(`${POKEAPI}/move/${formattedMove}`);
+
+    if (!response.ok) {
+        console.log(`Failed to fetch move: ${formattedMove}`);
+        return null;
+    }
+
+    const data = await response.json();
+
+    return data.type.name;
+}
+
+
 export const getAllMoveTypes = async(moves) => {
     const requests = moves.map(async (move) => {
         if (!move) {
