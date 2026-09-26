@@ -10,15 +10,11 @@ Comprehensive tracker for project goals, feature requests, and completed.
 
 ## 📋 Backlog / Upcoming Features
 - [ ] > PokeDex
-- [ ] > Routes/Walkthrough
+- [ ] > PokeRoutes/Walkthrough
         -> Image of route
         -> Pokemon that can be caught on the specific Route
         -> Items on the route?
-- [ ] Create fixed sidebar with the following sections
-    > Team Coverage (which types the team is effective against)
-    > Individual pokemon effectiveness/weaknesses
-        -> Card will "flip" over
-    > VS. Tab that covers rival fights, gym fights, and elite four fights
+- [ ] > Battles
 
 - [ ] Add game specific logic
     > Example: FireRed has Gen 1 pokemon, select Gen 2 and Gen 3 pokemon too
@@ -33,3 +29,20 @@ Comprehensive tracker for project goals, feature requests, and completed.
 - [x] SelectorDropdown Update
     > Find a way, if it is possible, to not render 30 dropdowns independently
     > Find a way to streamline the process and make it more efficient
+- [x] Create fixed sidebar with the following sections
+    > Team Coverage (which types the team is effective against)
+    > Individual pokemon effectiveness/weaknesses
+        -> Card will "flip" over
+    > VS. Tab that covers rival fights, gym fights, and elite four fights
+        -> No public API with NPC Battles, need to build into own db
+- [x] Create all Dashboard sections in sidebar & routes
+    > Team
+    > Pokemon Coverage
+    > Team Coverage
+    > Battles
+    > Routes
+    > Pokedex
+- [x] Dashboard sections fully functional
+    ~~> Team~~
+    ~~> Pokemon Coverage~~
+    ~~> Team Coverage~~

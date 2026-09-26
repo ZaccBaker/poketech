@@ -1,8 +1,9 @@
 import '../style/pages/Dashboard.css';
 
-import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { Outlet, useParams } from 'react-router-dom';
 
-import Team from '../sections/Team';
+import Sidebar from '../components/Sidebar';
 
 import { generations } from '../util/Generations';
 import { capitalizeWords } from '../util/capitalize';
@@ -14,6 +15,33 @@ function Dashboard(){
 
     const gen = generations[generation];
     const gameName = capitalizeWords(game);
+
+    const [team, setTeam] = useState([
+        {
+            pokemon: null,
+            moves: [null, null, null, null]
+        },
+        {
+            pokemon: null,
+            moves: [null, null, null, null]
+        },
+        {
+            pokemon: null,
+            moves: [null, null, null, null]
+        },
+        {
+            pokemon: null,
+            moves: [null, null, null, null]
+        },
+        {
+            pokemon: null,
+            moves: [null, null, null, null]
+        },
+        {
+            pokemon: null,
+            moves: [null, null, null, null]
+        }
+    ]);
 
 
     return (
@@ -28,7 +56,17 @@ function Dashboard(){
                 <h2>{gen.name}</h2>
             </div>
 
-            <Team />
+            <Sidebar />
+
+            <div className='dashboard-content'>
+                <Outlet 
+                    context={{
+                        team,
+                        setTeam
+                    }}
+                />
+            </div>
+            
         </div>
     );
 }

@@ -1,17 +1,33 @@
-.pokecard{
-    height: 600px;
+.pokecard {
     width: 550px;
+
+    /* Card can never get smaller than this,
+       but can grow with its content */
+    min-height: 540px;
+    height: auto;
 
     border-radius: 20px;
 
     background: var(--color-secondary);
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); 
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.15);
+
+    overflow: hidden;
 }
 
-/* .pokecard-pokemon{
-    text-align: center;
+.pokecard-coverage {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    gap: 18px;
+
     padding: 20px;
-} */
+
+    box-sizing: border-box;
+}
 
 .pokecard-pokemon {
     position: relative;

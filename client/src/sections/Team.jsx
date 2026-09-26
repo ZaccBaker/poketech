@@ -1,6 +1,6 @@
 import '../style/sections/Team.css';
 
-import { useParams } from 'react-router-dom';
+import { useOutletContext } from 'react-router-dom';
 import { useState } from 'react';
 
 import TeamEdit from '../components/TeamEdit';
@@ -11,13 +11,10 @@ function Team(){
 
     const [showEdit, setShowEdit] = useState(false);
 
-    const [team, setTeam] = useState(
-        Array.from({length:6}, (_, index) => ({
-            slot: index + 1,
-            pokemon: null,
-            moves: [null, null, null, null]
-        }))
-    );
+    const {
+        team,
+        setTeam
+    } = useOutletContext();
 
     const onShowEditClick = () => {
         setShowEdit(true);
